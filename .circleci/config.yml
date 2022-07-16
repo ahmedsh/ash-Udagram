@@ -56,6 +56,22 @@ jobs:
       - aws-cli/setup
       - checkout
       - run:
+          name: Install Front-End Dependencies
+          command: |
+            echo "NODE --version" 
+            echo $(node --version)
+            echo "NPM --version" 
+            echo $(npm --version)
+            npm run frontend:install
+      - run:
+          name: Front-End Build
+          command: |
+            npm run frontend:build
+      - run:
+          name: Front-End deploy
+          command: |
+            npm run frontend:deploy            
+      - run:
           name: Deploy App
           # TODO: Install, build, deploy in both apps
           command: |
