@@ -70,12 +70,20 @@ jobs:
       - run:
           name: Front-End deploy
           command: |
-            npm run frontend:deploy            
+            npm run frontend:deploy   
       - run:
-          name: Deploy App
-          # TODO: Install, build, deploy in both apps
+          name: Install API Dependencies
           command: |
-            npm run deploy
+           npm run api:install  
+      - run:
+          name: API Build
+          command: |
+            npm run api:build 
+      - run:
+          name: API deploy
+          command: |
+            npm run api:deploy                 
+      
             
 workflows:
   udagram:
